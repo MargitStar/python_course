@@ -1,3 +1,5 @@
+"""This calculator helps you count your body index"""
+
 print("Please, enter your weight in kilos!")
 weight = float(input())
 print("Please, enter your height in meters!")
