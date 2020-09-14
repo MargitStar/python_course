@@ -6,6 +6,7 @@ height = float(input())
 bmi_index = weight / (height ** 2)
 
 print(f"Your BMI index is {bmi_index}")
-print(f"10{'='*int((bmi_index - 10)/2)}|{'='*int((50 - bmi_index)/2 - 1)}50")
-print(' ' * (int((bmi_index - 10) / 2) + 1), round(bmi_index))
-
+equal_signs_before = int((bmi_index - 10) / 2)
+equal_signs_after = int((50 - bmi_index) / 2 - 1)
+print(f"10{'='*equal_signs_before}|{'='*equal_signs_after}50")
+print(' ' * (equal_signs_before + 1), round(bmi_index))
