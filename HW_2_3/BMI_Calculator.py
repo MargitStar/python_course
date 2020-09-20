@@ -86,9 +86,11 @@ while True:
             print("We don't have such person. Please, try again")
             input_name = input().strip().title()
         print("")
+
         if option == "2":
             for field, value in people_dict[input_name].items():
                 print(f"{field.title()} - {value}")
+
         elif option == "3":
             print("Please enter an field you want to update! sex, age, weight, height.")
             field_to_update = input().strip().lower()
@@ -114,7 +116,7 @@ while True:
             if field_to_update == "weight" or field_to_update == "heigth":
                 new_value = float(new_value)
             people_dict[input_name][field_to_update] = new_value
-            print(f"Field {")
+            print(f"Field {field_to_update} successfully updated!")
 
         elif option == "4":
             del people_dict[input_name]
