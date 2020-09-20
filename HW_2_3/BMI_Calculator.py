@@ -8,7 +8,7 @@ print("Hello! This is a bmi calculator!")
 while True:
     option = "1"
     if people_dict:
-        print("Choose the option:\n1. Create\n2. Read\n3. Update\n4. Delete")
+        print("Choose the option:\n'1' - Create\n'2' - Read\n'3' - Update\n'4' - Delete")
         option = input().strip()
 
     if option == "1":
@@ -79,17 +79,25 @@ while True:
             if bmi_index > 25:
                 print("Your weight is pretty high! Ask your children to do sport with you!")
 
-    elif option == "2":
+    elif option == "2" or option == "3" or option == "4":
         print("Please, enter a name!")
         input_name = input().strip().title()
         while input_name not in people_dict:
             print("We don't have such person. Please, try again")
             input_name = input().strip().title()
         print("")
-        for field, value in people_dict[input_name].items():
-            print(f"{field.title()} - {value}")
+        if option == "2":
+            for field, value in people_dict[input_name].items():
+                print(f"{field.title()} - {value}")
+
+        elif option == "4":
+            del people_dict[input_name]
+            print(f"Person {input_name} successfully deleted!")
+            
     
     print("\nList of users: ")
+    if not people_dict:
+        print("No users in the list")
     for index, person in enumerate(people_dict):
         print(f"{index+1}. {person}")
 
