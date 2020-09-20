@@ -8,7 +8,7 @@ print("Hello! This is a bmi calculator!")
 while True:
     option = "1"
     if people_dict:
-        print("Choose the option:\n'1' - Create\n'2' - Read\n'3' - Update\n'4' - Delete")
+        print("Choose the option:\n1 - Create\n2 - Read\n3 - Update\n4 - Delete")
         option = input().strip()
 
     if option == "1":
@@ -89,6 +89,32 @@ while True:
         if option == "2":
             for field, value in people_dict[input_name].items():
                 print(f"{field.title()} - {value}")
+        elif option == "3":
+            print("Please enter an field you want to update! sex, age, weight, height.")
+            field_to_update = input().strip().lower()
+            while field_to_update not in people_dict[name]:
+                print("We don't have such field. Please, try again")
+                input_name = input().strip().title()
+            print("Please enter new value!")
+            new_value = input().strip().lower()
+            if field_to_update == 'sex':
+                while True:
+                    if new_value != "woman" and new_value != "man":
+                        print("Sex could be a woman or a man! Please, try again!")
+                        new_value = input().strip().lower()
+                    else:
+                        break
+            if field_to_update == "age":
+                while True:
+                    if not new_value.isnumeric():
+                        print("Age could only be a number! Please, try again!")
+                        new_value = input().strip().lower()
+                    else:
+                        break
+            if field_to_update == "weight" or field_to_update == "heigth":
+                new_value = float(new_value)
+            people_dict[input_name][field_to_update] = new_value
+            print(f"Field {")
 
         elif option == "4":
             del people_dict[input_name]
