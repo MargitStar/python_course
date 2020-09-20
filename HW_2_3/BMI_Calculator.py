@@ -12,7 +12,7 @@ while True:
 
     print("Please, enter your sex!")
     while True:
-        sex = input()
+        sex = input().strip().lower()
         if sex != "woman" and sex != "man":
             print("Sex could be a woman or a man! Please, try again!")
         else:
@@ -48,9 +48,34 @@ while True:
     print(f"{min_index}{'='*equal_signs_before}|{'='*equal_signs_after}{max_index}")
     print(' ' * (equal_signs_before + 1), round(bmi_index))
 
-    print("To exit write QUIT. To continue write CONT!")
-    choise = input()
-    if choise == "QUIT":
+    if sex == "woman":
+        if age < 18:
+            if bmi_index >= 18.5 and bmi_index <= 25:
+                print("Your body condition is great! Keep going!")
+            if bmi_index < 18.5:
+                print("Your weight is very low! Try to eat more!")
+            if bmi_index > 25:
+                print("your weight is pretty high! Try to eat less!")
+        
+        if age >= 18 and age <= 45:
+            if bmi_index > 18.5 and bmi_index <= 25:
+                print("Your body condition is great! Your lifestyle is great! Keep going!")
+            if bmi_index < 18.5:
+                print("Your weight is very low! Please, visit a doctor. You might have health problems!")
+            if bmi_index > 25:
+                print("your weight is pretty high! Overweight can cause different health problems!")
+        
+        if age > 45:
+             if bmi_index > 18.5 and bmi_index <= 25:
+                print("Your body condition is great! You did great during your life!")
+            if bmi_index < 18.5:
+                print("Your weight is very low! Ask your children to give you some food!")
+            if bmi_index > 25:
+                print("your weight is pretty high! Ask your children to do sport with you!")
+
+    print("To exit write QUIT. Press enter to continue!")
+    choice = input()
+    if choice == "QUIT":
         break
 
 print("\nList of users: ")
