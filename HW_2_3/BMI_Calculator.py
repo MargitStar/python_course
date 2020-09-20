@@ -27,7 +27,8 @@ while True:
             print("Age could only be a number! Please, try again!")
         else:
             break
-    people_dict[name]['age'] = int(age)
+    age = int(age)
+    people_dict[name]['age'] = age
 
 
     print("Please, enter your weight in kilos!")
@@ -38,6 +39,8 @@ while True:
     print("Please, enter your height in meters!")
     height = float(input())
     people_dict[name]['height'] = height
+
+    print(people_dict)
 
 
     bmi_index = weight / (height ** 2)
@@ -66,7 +69,7 @@ while True:
                 print("your weight is pretty high! Overweight can cause different health problems!")
         
         if age > 45:
-             if bmi_index > 18.5 and bmi_index <= 25:
+            if bmi_index > 18.5 and bmi_index <= 25:
                 print("Your body condition is great! You did great during your life!")
             if bmi_index < 18.5:
                 print("Your weight is very low! Ask your children to give you some food!")
