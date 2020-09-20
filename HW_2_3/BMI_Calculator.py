@@ -6,52 +6,55 @@ people_dict = {}
 print("Hello! This is a bmi calculator!")
 
 while True:
-    print("Please, enter your name!")
-    name = input()
-    people_dict[name] = {}
+    option = "1"
+    if people_dict:
+        print("Choose the option:\n1. Create\n2. Read\n3. Update\n4. Delete")
+        option = input().strip()
 
-    print("Please, enter your sex!")
-    while True:
-        sex = input().strip().lower()
-        if sex != "woman" and sex != "man":
-            print("Sex could be a woman or a man! Please, try again!")
-        else:
-            break
-    people_dict[name]['sex'] = sex
+    if option == "1":
+        print("Please, enter your name!")
+        name = input().title()
+        people_dict[name] = {}
 
-
-    print("Please, enter your age!")
-    while True:
-        age = input()
-        if not age.isnumeric():
-            print("Age could only be a number! Please, try again!")
-        else:
-            break
-    age = int(age)
-    people_dict[name]['age'] = age
+        print("Please, enter your sex!")
+        while True:
+            sex = input().strip().lower()
+            if sex != "woman" and sex != "man":
+                print("Sex could be a woman or a man! Please, try again!")
+            else:
+                break
+        people_dict[name]['sex'] = sex
 
 
-    print("Please, enter your weight in kilos!")
-    weight = float(input())
-    people_dict[name]['weight'] = weight
+        print("Please, enter your age!")
+        while True:
+            age = input()
+            if not age.isnumeric():
+                print("Age could only be a number! Please, try again!")
+            else:
+                break
+        age = int(age)
+        people_dict[name]['age'] = age
 
 
-    print("Please, enter your height in meters!")
-    height = float(input())
-    people_dict[name]['height'] = height
-
-    print(people_dict)
+        print("Please, enter your weight in kilos!")
+        weight = float(input())
+        people_dict[name]['weight'] = weight
 
 
-    bmi_index = weight / (height ** 2)
-    print(f"Your BMI index is {bmi_index}")
+        print("Please, enter your height in meters!")
+        height = float(input())
+        people_dict[name]['height'] = height
 
-    equal_signs_before = int((bmi_index - min_index) / 2)
-    equal_signs_after = int((max_index - bmi_index) / 2 - 1)
-    print(f"{min_index}{'='*equal_signs_before}|{'='*equal_signs_after}{max_index}")
-    print(' ' * (equal_signs_before + 1), round(bmi_index))
 
-    if sex == "woman":
+        bmi_index = weight / (height ** 2)
+        print(f"Your BMI index is {bmi_index}")
+
+        equal_signs_before = int((bmi_index - min_index) / 2)
+        equal_signs_after = int((max_index - bmi_index) / 2 - 1)
+        print(f"{min_index}{'='*equal_signs_before}|{'='*equal_signs_after}{max_index}")
+        print(' ' * (equal_signs_before + 1), round(bmi_index))
+
         if age < 18:
             if bmi_index >= 18.5 and bmi_index <= 25:
                 print("Your body condition is great! Keep going!")
@@ -74,13 +77,23 @@ while True:
             if bmi_index < 18.5:
                 print("Your weight is very low! Ask your children to give you some food!")
             if bmi_index > 25:
-                print("your weight is pretty high! Ask your children to do sport with you!")
+                print("Your weight is pretty high! Ask your children to do sport with you!")
+
+    elif option == "2":
+        print("Please, enter a name!")
+        input_name = input().strip().title()
+        while input_name not in people_dict:
+            print("We don't have such person. Please, try again")
+            input_name = input().strip().title()
+        print("")
+        for field, value in people_dict[input_name].items():
+            print(f"{field.title()} - {value}")
+    
+    print("\nList of users: ")
+    for index, person in enumerate(people_dict):
+        print(f"{index+1}. {person}")
 
     print("To exit write QUIT. Press enter to continue!")
     choice = input()
     if choice == "QUIT":
         break
-
-print("\nList of users: ")
-for index, person in enumerate(people_dict):
-    print(f"{index+1}. {person}")
