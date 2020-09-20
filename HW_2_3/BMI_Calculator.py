@@ -38,13 +38,23 @@ while True:
 
 
         print("Please, enter your weight in kilos!")
-        weight = float(input())
-        people_dict[name]['weight'] = weight
+        while True:
+            try:
+                weight = float(input())
+                people_dict[name]['weight'] = weight
+                break
+            except ValueError:
+                print("Weight could only be a number! Please, try again!")
 
 
         print("Please, enter your height in meters!")
-        height = float(input())
-        people_dict[name]['height'] = height
+        while True:
+            try:
+                height = float(input())
+                people_dict[name]['height'] = height
+                break
+            except ValueError:
+                print("Height could only be a number! Please, try again!")
 
 
         bmi_index = weight / (height ** 2)
@@ -99,6 +109,7 @@ while True:
                 input_name = input().strip().title()
             print("Please enter new value!")
             new_value = input().strip().lower()
+
             if field_to_update == 'sex':
                 while True:
                     if new_value != "woman" and new_value != "man":
@@ -106,6 +117,7 @@ while True:
                         new_value = input().strip().lower()
                     else:
                         break
+
             if field_to_update == "age":
                 while True:
                     if not new_value.isnumeric():
@@ -113,8 +125,18 @@ while True:
                         new_value = input().strip().lower()
                     else:
                         break
+
             if field_to_update == "weight" or field_to_update == "heigth":
-                new_value = float(new_value)
+                while True:
+                    try:
+                        new_value = float(input())
+                        break
+                    except ValueError:
+                        if field_to_update == 'weight':
+                            print("Weight could only be a number! Please, try again!")
+                        if field_to_update == "height":
+                            print("Height could only be a number! Please, try again!")
+
             people_dict[input_name][field_to_update] = new_value
             print(f"Field {field_to_update} successfully updated!")
 
