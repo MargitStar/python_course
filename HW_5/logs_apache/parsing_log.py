@@ -42,5 +42,7 @@ print(len(ip_list))
 print("Amount of unique ips: ")
 print(len(set(ip_list)))
 print("Amount of unique browsers: ")
-print(browser_list.keys())
+print(len(browser_list.keys()))
 
+for key, count in sorted(browser_list.items(), key=lambda x: x[1], reverse=True):
+    print(f"{key} -> {count}")
