@@ -8,28 +8,32 @@ def get_current_time():
 
 
 def digits_from_number(number):
-    return [char for char in str(number)]
+    digit_list = []
+    for digit in str(number):
+        digit_list.append(digit)
+    if len(digit_list) == 1:
+        digit_list.insert(0, '0')
 
-
-def get_list_of_numbers(time):
-    numbers = [digits_from_number(i) for i in time]
-    for i in numbers:
-        if len(i) == 1:
-            i.insert(0, '0')
-    return [digit for number in numbers for digit in number]
+    return digit_list
 
 
 def get_my_numbers(time):
-    numbers = get_list_of_numbers(time)
+    numbers = [digits_from_number(i) for i in time]
+    print("\n\n")
+    counter = 0
     for i in range(5):
-        for number in numbers:
-            # if number == numbers[1] or number == numbers[3] and i == 3:
-            #     print(representations[number][i], end='   \u2588   ')
-            # if number == numbers[1] or number == numbers[3]:
-            #     print(representations[number][i], end='       ')
-            # else:
-            print(representations[number][i], end='   ')
-        print('')
+        for num_list in numbers:
+            line = ''
+            for number in num_list:
+                line += representations[number][i]
+                line += "  "
+            if i == 2 and counter < 2:
+                line += " \u2588   "
+                counter += 1
+            else:
+                line += "     "
+            print(line, end="")
+        print()
 
 
 def clear_the_screen():
