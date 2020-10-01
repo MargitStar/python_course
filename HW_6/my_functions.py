@@ -1,5 +1,6 @@
 from represetations import *
 
+
 def get_current_time():
     import datetime
     time = datetime.datetime.now().time()
@@ -16,7 +17,7 @@ def digits_from_number(number):
     return digit_list
 
 
-def get_my_numbers(time):
+def get_my_numbers(time, separator):
     numbers = [digits_from_number(i) for i in time]
     print("\n\n")
     for i in range(5):
@@ -24,7 +25,7 @@ def get_my_numbers(time):
         for num_list in numbers:
             components.append("  ".join(representations[num][i] for num in num_list))
         if i == 2:
-            line = "  \u2588\u2588  ".join(components)
+            line = f"  {separator}  ".join(components)
         else:
             line = "      ".join(components)
         print(line, end="")
