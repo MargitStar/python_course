@@ -28,10 +28,10 @@ def get_my_numbers(time):
                 line += representations[number][i]
                 line += "  "
             if i == 2 and counter < 2:
-                line += " \u2588   "
+                line += "\u2588\u2588  "
                 counter += 1
             else:
-                line += "     "
+                line += "    "
             print(line, end="")
         print()
 
