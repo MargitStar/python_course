@@ -3,7 +3,7 @@ from time import sleep
 
 if __name__ == '__main__':
     while True:
+        clear_the_screen()
         time = get_current_time()
         get_my_numbers(time)
-        clear_the_screen()
-        sleep(0.3)
+        sleep(0.25)
