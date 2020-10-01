@@ -1,15 +1,4 @@
-representations = {
-    '0': ('###', '# #', '# #', '# #', '###'),
-    '1': ('  #', '  #', '  #', '  #', '  #'),
-    '2': ('###', '  #', '###', '#  ', '###'),
-    '3': ('###', '  #', '###', '  #', '###'),
-    '4': ('# #', '# #', '###', '  #', '  #'),
-    '5': ('###', '#  ', '###', '  #', '###'),
-    '6': ('###', '#  ', '###', '# #', '###'),
-    '7': ('###', '  #', '  #', '  #', '  #'),
-    '8': ('###', '# #', '###', '# #', '###'),
-    '9': ('###', '# #', '###', '  #', '###'),
-}
+from represetations import *
 
 
 def get_current_time():
@@ -34,9 +23,13 @@ def get_my_numbers(time):
     numbers = get_list_of_numbers(time)
     for i in range(5):
         for number in numbers:
+            # if number == numbers[1] or number == numbers[3] and i == 3:
+            #     print(representations[number][i], end='   \u2588   ')
+            # if number == numbers[1] or number == numbers[3]:
+            #     print(representations[number][i], end='       ')
+            # else:
             print(representations[number][i], end='   ')
         print('')
-        # print("  ".join(segment[i] for segment in representations))
 
 
 def clear_the_screen():
