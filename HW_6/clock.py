@@ -3,18 +3,13 @@ from time import sleep
 
 
 def separator():
-    flag = False
     while True:
-        if flag:
-            yield "\u2588\u2588"
-        else:
-            yield "  "
-        flag = not flag
+        yield "\u2588\u2588"
+        yield "\u25A0\u25A0"
 
 
 def get_colors():
     while True:
-        yield '\033[34m'
         yield '\033[36m'
         yield '\033[35m'
         yield '\033[37m'
