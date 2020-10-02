@@ -17,7 +17,7 @@ def digits_from_number(number):
     return digit_list
 
 
-def get_my_numbers(time, separator):
+def get_my_numbers(time, separator, color):
     numbers = [digits_from_number(i) for i in time]
     print("\n\n")
     for i in range(5):
@@ -28,7 +28,7 @@ def get_my_numbers(time, separator):
             line = f"  {separator}  ".join(components)
         else:
             line = "      ".join(components)
-        print(line, end="")
+        print(f"{color}", line, end="")
         print()
 
 
