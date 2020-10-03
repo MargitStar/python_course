@@ -1,3 +1,5 @@
+"""Module with digits representation"""
+
 representations = {
     '0': ('\u2588\u2588\u2588\u2588\u2588\u2588',
           '\u2588\u2588  \u2588\u2588',
