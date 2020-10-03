@@ -33,7 +33,8 @@ def get_my_numbers(time, separator, color):
             line = f"  {separator}  ".join(components)
         else:
             line = "      ".join(components)
-        print(f"{color}", line, end="")
+        end_color = '\033[0m'
+        print(color, line, end_color, end="")
         print()
 
 
