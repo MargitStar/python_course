@@ -55,5 +55,8 @@ def get_separator():
 def get_color():
     while True:
         yield '\033[36m'
+        yield '\033[36m'
         yield '\033[35m'
+        yield '\033[35m'
+        yield '\033[37m'
         yield '\033[37m'
