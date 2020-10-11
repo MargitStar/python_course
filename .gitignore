@@ -1,3 +1,5 @@
 .idea/
 /HW_5/logs_apache/access.log
 __pycache__
+.env
+env/
