@@ -41,10 +41,10 @@ class User(Base):
         user = session.query(User).filter_by(name=name).first()
         if user is None:
             return
-        user.user = new_name
+        user.name = new_name
         session.flush()
         session.commit()
-        return user.user
+        return user.name
 
     @classmethod
     def all(cls):
