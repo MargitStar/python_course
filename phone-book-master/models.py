@@ -38,11 +38,13 @@ class User(Base):
 
     @classmethod
     def update(cls, name, new_name):
-        updated = session.query(User).filter_by(name=name).update(name=new_name)
-        if updated is None:
+        user = session.query(User).filter_by(name=name).first()
+        if user is None:
             return
+        user.user = new_name
+        session.flush()
         session.commit()
-        return updated
+        return user.user
 
     @classmethod
     def all(cls):
@@ -81,11 +83,13 @@ class Phone(Base):
 
     @classmethod
     def update(cls, phone, new_phone):
-        updated = session.query(Phone).filter_by(phone=phone).update({phone: new_phone})
-        if updated is None:
+        phone = session.query(Phone).filter_by(phone=phone).first()
+        if phone is None:
             return
+        phone.phone = new_phone
+        session.flush()
         session.commit()
-        return updated
+        return phone.phone
 
 
 Base.metadata.create_all(engine)

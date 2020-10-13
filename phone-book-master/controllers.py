@@ -23,7 +23,7 @@ def all_users_controller(data=None, cls=True):
 
 def special_user_controller(data=None, cls=True):
     render_template(context={}, template="add_user.jinja2", cls=cls)
-    name = input()
+    name = input().strip().title()
     users = User.temp(name)
     render_template(context={'users': users}, template="all_users.jinja2", cls=cls)
     input("Продолжить?")
@@ -53,7 +53,7 @@ def delete_user(data=None, cls=True):
 
 def delete_phone(data=None, cls=True):
     render_template(context={}, template="add_phone.jinja2", cls=cls)
-    phone = input()
+    phone = input().strip().title()
     Phone.delete(phone)
     return 51, None
 
@@ -64,6 +64,15 @@ def update_phone(data=None, cls=True):
     render_template(context={}, template="add_new_phone.jinja2", cls=cls)
     new_phone = input()
     Phone.update(phone, new_phone)
+    return 51, None
+
+
+def update_name(data=None, cls=True):
+    render_template(context={}, template="add_user.jinja2", cls=cls)
+    name = input()
+    render_template(context={}, template="add_new_user.jinja2", cls=cls)
+    new_name = input()
+    User.update(name, new_name)
     return 51, None
 
 
@@ -84,9 +93,10 @@ controllers_dict = {  # use dict type instead of if else chain
     '1': all_users_controller,
     '2': add_user_controller,
     '3': update_phone,
-    '4': delete_user,
-    '5': delete_phone,
-    '6': special_user_controller,
+    '4': update_name,
+    '5': delete_user,
+    '6': delete_phone,
+    '7': special_user_controller,
     21: add_phone_controller,  # user can't enter 21 of int type
     212: add_more_controller,
     211: delete_phone,
