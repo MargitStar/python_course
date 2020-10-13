@@ -37,8 +37,20 @@ class User(Base):
         return deleted
 
     @classmethod
+    def update(cls, name, new_name):
+        updated = session.query(User).filter_by(name=name).update(name=new_name)
+        if updated is None:
+            return
+        session.commit()
+        return updated
+
+    @classmethod
     def all(cls):
         return session.query(cls).all()
+
+    @classmethod
+    def temp(cls, name):
+        return session.query(cls).filter_by(name=name).all()
 
 
 class Phone(Base):
@@ -68,8 +80,12 @@ class Phone(Base):
         return deleted
 
     @classmethod
-    def update(cls, phone, use):
-        session.query()
+    def update(cls, phone, new_phone):
+        updated = session.query(Phone).filter_by(phone=phone).update({phone: new_phone})
+        if updated is None:
+            return
+        session.commit()
+        return updated
 
 
 Base.metadata.create_all(engine)
